@@ -9,7 +9,7 @@ jobs:
             - uses: ./.github/actions/deno
             - run: |
                 deno task build online
-                deno install npm:gh-pages
+                npm install -g gh-pages --save-dev
                 gh-pages --help
 
 
