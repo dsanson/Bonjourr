@@ -10,7 +10,7 @@ jobs:
             - name: build site
               run: |
                 deno task build online
-                ls
+                ls release
 
             - name: Deploy with gh-pages
               run: |
