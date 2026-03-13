@@ -10,6 +10,6 @@ jobs:
             - run: |
                 deno task build online
                 npm install -g gh-pages --save-dev
-                gh-pages -d release/online
+                gh-pages -d "release/online" --nojekyll
 
 
