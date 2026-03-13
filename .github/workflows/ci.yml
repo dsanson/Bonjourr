@@ -7,4 +7,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: ./.github/actions/deno
-            - run: deno task build online
+            - run: |
+              deno task build online
+              deno install gh-pages
+              gh-pages --help
+
+
