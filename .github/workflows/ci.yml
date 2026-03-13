@@ -13,9 +13,9 @@ jobs:
 
             - name: Deploy with gh-pages
               run: |
-                cd release
                 git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-                npx gh-pages -d online -u "github-actions-bot <support+actions@github.com>" --nojekyll
+                touch packages.json
+                npx gh-pages -d release/online -u "github-actions-bot <support+actions@github.com>" --nojekyll
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
