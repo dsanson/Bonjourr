@@ -1,0 +1,21 @@
+name: ci
+on: push
+
+jobs:
+    builds:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: ./.github/actions/deno
+            - name: build site
+              run: |
+                deno task build online
+
+            - name: Deploy with gh-pages
+              run: |
+                git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+                touch package.json
+                npx gh-pages --dist release/online -u "github-actions-bot <support+actions@github.com>" --nojekyll
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
